@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Recibo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        .nomecima{
+            font-family: 'Poppins';
+            color: rgb(0,0,0);
+        }
+        .inputUser{
+            font-family: 'Poppins';
+            border-width: 0.1px;
+            border-radius: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+        .inputUser::-webkit-input-placeholder{
+            font-size: 16px;
+        }
+        .BUTTON{
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border-width: 0px;
+            width: 100%;
+            color: #ffffff;
+            font-family: 'Poppins';
+            font-size: 21px;
+            padding: 10px;
+            background-color: #000000;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+            IMG.displayed {
+                display: block;
+                margin-left: auto;
+                margin-right: auto }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="LogoAlienus.png" alt="Alienus" width="200" height="120" class="displayed">
+    </div>
+    <div class="row">
+        <form>
+            <!--Numero inicial-->
+            <label for="numeroInicial" class="nomecima">
+                <b>Numero inicial</b>
+            </label>
+            <input id="numeroInicial" class="inputUser" placeholder="Exemplo: 01">
+            <br>
+
+            <!--Locador-->
+            <label for="nomeLocador" class="nomecima">
+                <b>Nome do Locador</b>
+            </label>
+            <input id="nomeLocador" class="inputUser" placeholder="EX: João Vinicius Senna de Brito Pinto">
+            <br>
+
+            <!--Locatário-->
+            <label for="nomeLocatario" class="nomecima">
+                <b>Nome do Locatário</b>
+            </label>
+            <input id="nomeLocatario" class="inputUser" placeholder="EX: Alda Maria ALves de Brito">
+            <br>
+
+            <!--Endereço-->
+            <label for="endereco" class="nomecima">
+                <b>Endereço do imóvel</b>
+            </label>
+            <input id="endereco" class="inputUser" placeholder="EX: Rua: Padre Anchieta, N°:323, Bairro: Artur Alves, Seabra - BA, CEP: 46.900.000">
+            <br>
+
+            <!--Valor-->
+            <label for="valorRs" class="nomecima">
+                <b>Valor do imóvel</b>
+            </label>
+            <input id="valorRs" class="inputUser" placeholder="EX: 500,00">
+            <br>
+
+            <!--Valor por extenso-->
+            <label for="valorPorExtenso" class="nomecima">
+                <b>Valor do imóvel por extenso</b>
+            </label>
+            <input id="valorPorExtenso" class="inputUser" placeholder="EX: Quinhentos Reais">
+            <br>
+
+            <!--Data-->
+            <label for="diaData" class="nomecima">
+                <b>Dia</b>
+            </label>
+            <input id="diaData" class="inputUser" placeholder="EX: 15">
+            <br>
+
+            <label for="mesData" class="nomecima">
+                <b>Mês</b>
+            </label>
+            <input id="mesData" class="inputUser" placeholder="EX: 06">
+            <br>
+
+            <label for="anoData" class="nomecima">
+                <b>Ano</b>
+            </label>
+            <input id="anoData" class="inputUser" placeholder="EX: 2022">
+            <br>
+
+            <!--Numero de recibos-->
+            <label for="numeroRecibos" class="nomecima">
+                <b>Numero de recibos</b>
+            </label>
+            <input id="numeroRecibos" class="inputUser" placeholder="EX: 12">
+            <br>
+
+            <!--Botão submit-->
+            <br><br>
+            <input id="submit" type="button" class="BUTTON" value="Fazer Recibo" onclick="construirRecibo()">  
+        </form>
+    </div>
+<script>
+    // Função construtora
+    var construirRecibo = function(numeroInicial, nomeLocador, nomeLocatario, endereco, valorRs, valorPorExtenso, diaData, mesData, anoData, numeroRecibos) {
+        this.numeroInicial = numeroInicial;
+        this.nomeLocador = nomeLocador;
+        this.nomeLocatario = nomeLocatario;
+        this.endereco = endereco;
+        this.valorRs = valorRs;
+        this.valorPorExtenso = valorPorExtenso;
+        this.diaData = diaData;
+        this.mesData = mesData;
+        this.anoData = anoData;
+        this.numeroRecibos = numeroRecibos;
+    }
+    
+    //Instancias
+    var numeroInicial = document.getElementById("numeroInicial");
+    var nomeLocador = document.getElementById("nomeLocador");
+    var nomeLocatario = document.getElementById("nomeLocatario");
+    var endereco = document.getElementById("endereco");
+    var valorRs = document.getElementById("valorRs");
+    var valorPorExtenso = document.getElementById("valorPorExtenso");
+    var diaData = document.getElementById("diaData");
+    var mesData = document.getElementById ("mesData");
+    var anoData = document.getElementById("anoData");
+    var numeroRecibos = document.getElementById("numeroRecibos");
+
+    // Opcional
+
+    // Incrementador numero do recibo
+    for(var i = 0;i < numeroRecibos;i++) {
+        numeroInicial = numeroInicial + 1;
+    }
+
+    // Incrementador data
+    for(var i = 0;i < numeroRecibos;i++) {
+        if (mesData = 12) {
+            mesData = 01;
+        }
+    }
+</script>
+</body>
+</html>
