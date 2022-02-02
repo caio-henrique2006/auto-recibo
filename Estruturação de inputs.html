@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='pdfmake/build/pdfmake.min.js'></script> 
+    <script src='pdfmake/build/vfs_fonts.js'></script>
     <title>Auto-Recibo</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
@@ -59,16 +61,9 @@
             cursor: pointer;
             text-align: center;
         }
-            IMG.displayed {
-                display: block;
-                margin-left: auto;
-                margin-right: auto }
     </style>
 </head>
 <body>
-    <div>
-        <img src="LogoAlienus.png" alt="Alienus" width="200" height="140" class="displayed">
-    </div>
     <div class="row">
         <form>
             <!--Numero inicial-->
@@ -155,50 +150,7 @@
             <input id="submit" type="button" class="BUTTON" value="Fazer Recibo" onclick="construirRecibo()">  
         </form>
     </div>
-<script>
-    // Função construtora
-    var construirRecibo = function(numeroInicial, nomeLocador, nomeLocatario, residencial, comercial, endereco, valorRs, valorPorExtenso, diaData, mesData, anoData, numeroRecibos) {
-        this.numeroInicial = numeroInicial;
-        this.nomeLocador = nomeLocador;
-        this.nomeLocatario = nomeLocatario;
-        this.residencial = residencial;
-        this.comercial = comercial;
-        this.endereco = endereco;
-        this.valorRs = valorRs;
-        this.valorPorExtenso = valorPorExtenso;
-        this.diaData = diaData;
-        this.mesData = mesData;
-        this.anoData = anoData;
-        this.numeroRecibos = numeroRecibos;
-    }
-    
-    //Instancias
-    var numeroInicial = document.getElementById ("numeroInicial");
-    var nomeLocador = document.getElementById ("nomeLocador");
-    var nomeLocatario = document.getElementById ("nomeLocatario");
-    var residencial = document.getElementById ("residencial");
-    var comercial = document.getElementById ("comercial")
-    var endereco = document.getElementById ("endereco");
-    var valorRs = document.getElementById ("valorRs");
-    var valorPorExtenso = document.getElementById ("valorPorExtenso");
-    var diaData = document.getElementById ("diaData");
-    var mesData = document.getElementById ("mesData");
-    var anoData = document.getElementById ("anoData");
-    var numeroRecibos = document.getElementById ("numeroRecibos");
-
-    // Opcional
-
-    // Incrementador numero do recibo
-    for(var i = 0;i < numeroRecibos;i++) {
-        numeroInicial = numeroInicial + 1;
-    }
-
-    // Incrementador data
-    for(var i = 0;i < numeroRecibos;i++) {
-        if (mesData = 12) {
-            mesData = 01;
-        }
-    }
-</script>
+    <script src="pdfmake.js"></script>
+    <script type="text/javascript">(function(){window['__CF$cv$params']={r:'6d771943ee3c4d48',m:'ZkY3MIlHHMI472SgGFsc5lTWw0cUgJwuBU9_wA4vAWg-1643843487-0-ATZtN46gi7sV28qPp7Zuv6WK4QQFR2KCzJgf2WeqZsDEDSk/Xc2bqlILmaaiwZ0xioz4/ETYTNHATUvHKTYoka3DNCb/Oe+pvnvuBjazpv8cspmVxEPFUmw07KsFW7LZeemTSUR0KdM4Tpk77MZBdxlu3tRsavs8Iul7ahvsvvgh9wsbty3IXPkY0GnSNdnaZUTCQW4lwVpduf0lwO9KyqI=',s:[0x6baf3ef87a,0x072d80e02a],}})();</script>
 </body>
 </html>
