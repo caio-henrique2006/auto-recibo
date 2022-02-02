@@ -4,14 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='pdfmake/build/pdfmake.min.js'></script> 
-    <script src='pdfmake/build/vfs_fonts.js'></script>
     <title>Auto-Recibo</title>
-    <link rel="stylesheet" href="index.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        .nomecima{
+            font-family: 'Poppins';
+            color: rgb(0,0,0);
+        }
+        .inputUser{
+            font-family: 'Poppins';
+            border-width: 0.1px;
+            border-radius: 10px;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-family: 'Poppins';
+        }
+        .inputUser::-webkit-input-placeholder{
+            font-size: 16px;
+        }
+        .BUTTON{
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border-width: 0px;
+            width: 100%;
+            color: #ffffff;
+            font-family: 'Poppins';
+            font-size: 21px;
+            padding: 10px;
+            background-color: #000000;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+        .BUTTON2{
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border-width: 0px;
+            width: 15%;
+            color: #ffffff;
+            font-family: 'Poppins';
+            font-size: 15px;
+            padding: 7px;
+            background-color: #000000;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+        }
+            IMG.displayed {
+                display: block;
+                margin-left: auto;
+                margin-right: auto }
+    </style>
 </head>
 <body>
     <div>
-        <img src="LogoAlienus.png" alt="Alienus" width="200" height="120" class="displayed">
+        <img src="LogoAlienus.png" alt="Alienus" width="200" height="140" class="displayed">
     </div>
     <div class="row">
         <form>
@@ -28,6 +84,17 @@
             </label>
             <input id="nomeLocador" class="inputUser" placeholder="EX: João Vinicius Senna de Brito Pinto">
             <br>
+
+            <!--Residencial ou Comercial-->
+            <label for="residencial" class="nomecima">
+                <b>Residencial ou Comercial?</b>
+            </label>
+            <br>
+            <select class="BUTTON2">
+                <option id="residencial" class="BUTTON2" value="residencial">Residencial</option>
+                <option id="comercial" class="BUTTON2" value="comercial">Comercial</option>
+            </select>
+            <br><br>
 
             <!--Locatário-->
             <label for="nomeLocatario" class="nomecima">
@@ -85,9 +152,53 @@
 
             <!--Botão submit-->
             <br><br>
-            <input id="submit" type="button" class="BUTTON" value="Fazer Recibo">  
+            <input id="submit" type="button" class="BUTTON" value="Fazer Recibo" onclick="construirRecibo()">  
         </form>
     </div>
-    <script src="pdfmake.js"></script>
+<script>
+    // Função construtora
+    var construirRecibo = function(numeroInicial, nomeLocador, nomeLocatario, residencial, comercial, endereco, valorRs, valorPorExtenso, diaData, mesData, anoData, numeroRecibos) {
+        this.numeroInicial = numeroInicial;
+        this.nomeLocador = nomeLocador;
+        this.nomeLocatario = nomeLocatario;
+        this.residencial = residencial;
+        this.comercial = comercial;
+        this.endereco = endereco;
+        this.valorRs = valorRs;
+        this.valorPorExtenso = valorPorExtenso;
+        this.diaData = diaData;
+        this.mesData = mesData;
+        this.anoData = anoData;
+        this.numeroRecibos = numeroRecibos;
+    }
+    
+    //Instancias
+    var numeroInicial = document.getElementById ("numeroInicial");
+    var nomeLocador = document.getElementById ("nomeLocador");
+    var nomeLocatario = document.getElementById ("nomeLocatario");
+    var residencial = document.getElementById ("residencial");
+    var comercial = document.getElementById ("comercial")
+    var endereco = document.getElementById ("endereco");
+    var valorRs = document.getElementById ("valorRs");
+    var valorPorExtenso = document.getElementById ("valorPorExtenso");
+    var diaData = document.getElementById ("diaData");
+    var mesData = document.getElementById ("mesData");
+    var anoData = document.getElementById ("anoData");
+    var numeroRecibos = document.getElementById ("numeroRecibos");
+
+    // Opcional
+
+    // Incrementador numero do recibo
+    for(var i = 0;i < numeroRecibos;i++) {
+        numeroInicial = numeroInicial + 1;
+    }
+
+    // Incrementador data
+    for(var i = 0;i < numeroRecibos;i++) {
+        if (mesData = 12) {
+            mesData = 01;
+        }
+    }
+</script>
 </body>
 </html>
