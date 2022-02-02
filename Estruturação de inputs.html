@@ -85,50 +85,9 @@
 
             <!--Botão submit-->
             <br><br>
-            <input id="submit" type="button" class="BUTTON" value="Fazer Recibo" onclick="construirRecibo()">  
+            <input id="submit" type="button" class="BUTTON" value="Fazer Recibo">  
         </form>
     </div>
     <script src="pdfmake.js"></script>
-<script>
-    // Função construtora
-    var construirRecibo = function(numeroInicial, nomeLocador, nomeLocatario, endereco, valorRs, valorPorExtenso, diaData, mesData, anoData, numeroRecibos) {
-        this.numeroInicial = numeroInicial;
-        this.nomeLocador = nomeLocador;
-        this.nomeLocatario = nomeLocatario;
-        this.endereco = endereco;
-        this.valorRs = valorRs;
-        this.valorPorExtenso = valorPorExtenso;
-        this.diaData = diaData;
-        this.mesData = mesData;
-        this.anoData = anoData;
-        this.numeroRecibos = numeroRecibos;
-    }
-    
-    //Instancias
-    var numeroInicial = document.getElementById("numeroInicial");
-    var nomeLocador = document.getElementById("nomeLocador");
-    var nomeLocatario = document.getElementById("nomeLocatario");
-    var endereco = document.getElementById("endereco");
-    var valorRs = document.getElementById("valorRs");
-    var valorPorExtenso = document.getElementById("valorPorExtenso");
-    var diaData = document.getElementById("diaData");
-    var mesData = document.getElementById ("mesData");
-    var anoData = document.getElementById("anoData");
-    var numeroRecibos = document.getElementById("numeroRecibos");
-
-    // Opcional
-
-    // Incrementador numero do recibo
-    for(var i = 0;i < numeroRecibos;i++) {
-        numeroInicial = numeroInicial + 1;
-    }
-
-    // Incrementador data
-    for(var i = 0;i < numeroRecibos;i++) {
-        if (mesData = 12) {
-            mesData = 01;
-        }
-    }
-</script>
 </body>
 </html>

@@ -13,6 +13,25 @@ pdfMake.fonts = {
     bolditalics: 'calibri-bold-italic.ttf'
   }
 };
+submit.onclick = function() {
+/*Parte lógica*/
+    // Variáveis:
+    var numeroInicial = document.getElementById("numeroInicial").value.toUpperCase();
+    var nomeLocador = document.getElementById("nomeLocador").value.toUpperCase();
+    var nomeLocatario = document.getElementById("nomeLocatario").value.toUpperCase();
+    var endereco = document.getElementById("endereco").value.toUpperCase();
+    var valorRs = document.getElementById("valorRs").value.toUpperCase();
+    var valorPorExtenso = document.getElementById("valorPorExtenso").value.toUpperCase();
+    var diaData = document.getElementById("diaData").value.toUpperCase();
+    var mesData = document.getElementById ("mesData").value.toUpperCase();
+    var anoData = document.getElementById("anoData").value.toUpperCase();
+    var numeroRecibos = document.getElementById("numeroRecibos").value.toUpperCase();
+
+    if(endereco.length > 15){
+    	endereco = endereco.slice(0, 55) + "-\n" + endereco.slice(55, endereco.length);
+    }
+
+// Criação do PDF:
 var docDefinition = { 
 	content: [
 		// Todos os textos:
@@ -27,23 +46,23 @@ var docDefinition = {
 			fontSize: 14,
 		},
 		{
-			text: "Nº: 12      (X)RESIDENCIAL              ( )COMERCIAL", 
+			text: "Nº: "+ numeroInicial +"      (X)RESIDENCIAL              ( )COMERCIAL", 
 			absolutePosition: {x:90, y:110},
 		},
 		{
-			text: "LOCADOR(A): GILDÁSIO RAMOS DE OLIVEIRA JUNIOR", 
+			text: "LOCADOR(A): " + nomeLocador, 
 			absolutePosition: {x:85, y:150},
 		},
 		{
-			text: "LOCATÁRIO: MAURILIO DE OLIVEIRA NUNES", 
+			text: "LOCATÁRIO: " + nomeLocatario, 
 			absolutePosition: {x:85, y:173},
 		},
 		{
-			text: "ENDEREÇO: JACOB GUANAES N: 600-H, CENTRO, SEABRA-BA, CEP-46900\n000", 
+			text: "ENDEREÇO: " + endereco, 
 			absolutePosition: {x:85, y:197},
 		},
 		{
-			text: "VALOR POR EXTENSO: QUATROCENTOS REAIS", 
+			text: "VALOR POR EXTENSO: " + valorPorExtenso, 
 			absolutePosition: {x:85, y:240},
 		},
 		{
@@ -51,11 +70,11 @@ var docDefinition = {
 			absolutePosition: {x:85, y:270},
 		},
 		{
-			text: "VENC: 10/01/2022", 
+			text: "VENC: "  + diaData + "/" + mesData + "/" + anoData, 
 			absolutePosition: {x:85, y:305},
 		},
 		{
-			text: "ALUGUEL R$:400.00", 
+			text: "ALUGUEL " + valorRs, 
 			absolutePosition: {x:413, y:78},
 		},
 		{
@@ -71,7 +90,7 @@ var docDefinition = {
 			absolutePosition: {x:413, y:155},
 		},
 		{
-			text: "R$: 400,00", 
+			text: "R$: " + valorRs, 
 			absolutePosition: {x:441, y:155},
 			decoration: "underline",
 		},
@@ -97,5 +116,6 @@ var docDefinition = {
 	},
 };
 // abre o pdf:
-
-pdfMake.createPdf(docDefinition).open()
+	const submit = document.getElementById("submit");
+	pdfMake.createPdf(docDefinition).open()
+}
