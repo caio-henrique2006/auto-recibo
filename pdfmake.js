@@ -14,8 +14,9 @@ pdfMake.fonts = {
   }
 };
 submit.onclick = function() {
+	var numeroRecibos = document.getElementById("numeroRecibos").value
 /*Parte lógica*/
-	function recibos() {
+	function recibos(numeroRecibos) {
 	    // Inputs:
 	    var numeroInicial = document.getElementById("numeroInicial").value.toUpperCase();
 	    var nomeLocador = document.getElementById("nomeLocador").value.toUpperCase();
@@ -42,6 +43,8 @@ submit.onclick = function() {
 	    	endereco = endereco.slice(0, 55) + "-\n" + endereco.slice(55, endereco.length);
 	    }
 
+
+	    console.log(numeroInicial)
 	// Criação do PDF:
 	var PDFRecibo = { 
 		content: [
@@ -199,16 +202,26 @@ submit.onclick = function() {
 				pageBreak: 'after',
 			},
 		],
+	}
 
+	return PDFRecibo
+}
+
+var newPDF = {
+		content: [
+
+		],
 		// Estilo padrão
 		defaultStyle: {
 			fontSize: 10,
 			font: "Calibri", 
 		},
-	};
-	return PDFRecibo
-}
+	}
+	while(numeroRecibos >= 1){
+		newPDF.content.push(recibos().content);
+		numeroRecibos = numeroRecibos - 1;
+	}
 // abre o pdf:
 	const submit = document.getElementById("submit");
-	pdfMake.createPdf(recibos()).open()
+	pdfMake.createPdf(newPDF).open()
 }
