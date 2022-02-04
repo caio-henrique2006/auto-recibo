@@ -14,22 +14,28 @@ pdfMake.fonts = {
   }
 };
 submit.onclick = function() {
-	var numeroRecibos = document.getElementById("numeroRecibos").value
+	var numeroRecibos = document.getElementById("numeroRecibos").value;
+	var numeroInicial = document.getElementById("numeroInicial").value;
+	var mesData = document.getElementById ("mesData").value;
+	var anoData = document.getElementById("anoData").value;
 /*Parte lógica*/
-	function recibos(numeroRecibos) {
+	function recibos(numeroInicial, mesData) {
 	    // Inputs:
-	    var numeroInicial = document.getElementById("numeroInicial").value.toUpperCase();
 	    var nomeLocador = document.getElementById("nomeLocador").value.toUpperCase();
 	    var nomeLocatario = document.getElementById("nomeLocatario").value.toUpperCase();
 	    var endereco = document.getElementById("endereco").value.toUpperCase();
 	    var valorRs = document.getElementById("valorRs").value.toUpperCase();
 	    var valorPorExtenso = document.getElementById("valorPorExtenso").value.toUpperCase();
 	    var diaData = document.getElementById("diaData").value.toUpperCase();
-	    var mesData = document.getElementById ("mesData").value.toUpperCase();
-	    var anoData = document.getElementById("anoData").value.toUpperCase();
 	    var numeroRecibos = document.getElementById("numeroRecibos").value.toUpperCase();
 	    // Input option:
 	    var residencial = document.getElementById("residencial").selected;
+
+	    // Resolvendo 0 numeroInicial:
+	    console.log(numeroInicial);
+	    if(parseInt(numeroInicial) < 10) {
+	    	numeroInicial = "0" + numeroInicial;
+	    }
 
 	    // Resolvendo residencial e comercial:
 	    if(residencial) {
@@ -43,8 +49,11 @@ submit.onclick = function() {
 	    	endereco = endereco.slice(0, 55) + "-\n" + endereco.slice(55, endereco.length);
 	    }
 
-
-	    console.log(numeroInicial)
+	    // Resolvendo 0 mêsData:
+	    console.log(mesData);
+	    if(parseInt(mesData) < 10) {
+	    	mesData = "0" + mesData;
+	    }
 	// Criação do PDF:
 	var PDFRecibo = { 
 		content: [
@@ -123,7 +132,7 @@ submit.onclick = function() {
 				absolutePosition: {x:85, y:305},
 			},
 			{
-				text: "ALUGUEL " + valorRs, 
+				text: "ALUGUEL R$: " + valorRs, 
 				absolutePosition: {x:413, y:78},
 			},
 			{
@@ -218,8 +227,18 @@ var newPDF = {
 		},
 	}
 	while(numeroRecibos >= 1){
-		newPDF.content.push(recibos().content);
+		recibos();
+		newPDF.content.push(recibos(numeroInicial, mesData, anoData).content);
 		numeroRecibos = numeroRecibos - 1;
+		// Mudança de número:
+		numeroInicial = parseInt(numeroInicial) + 1;
+		// Mudança de mês:
+		if(mesData === 12){
+			mesData = 1;
+			anoData = parseInt(anoData) + 1;
+		}else{
+			mesData = parseInt(mesData) + 1;
+		}
 	}
 // abre o pdf:
 	const submit = document.getElementById("submit");
